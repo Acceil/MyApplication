@@ -3,23 +3,23 @@ package ru.acceil.myapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
+import android.view.View
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 
-class MainActivity : AppCompatActivity() {
+class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.movie_details)
 
-        val movieDetails: ImageView = findViewById(R.id.main_activity)
-        movieDetails.setOnClickListener { moveToMain() }
+        val backButton: LinearLayout = findViewById(R.id.back_button)
+        backButton.setOnClickListener { moveToMain() }
 
     }
 
     private fun moveToMain() {
-        val intent = Intent(this, SecondActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-
 }
