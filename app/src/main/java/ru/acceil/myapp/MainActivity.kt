@@ -1,25 +1,20 @@
 package ru.acceil.myapp
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+    private val firstFrag = FragmentMoviesList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val movieDetails: ImageView = findViewById(R.id.main_activity)
-        movieDetails.setOnClickListener { moveToMain() }
-
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.main, firstFrag)
+                commit()
+            }
+        }
     }
-
-    private fun moveToMain() {
-        val intent = Intent(this, SecondActivity::class.java)
-        startActivity(intent)
-    }
-
 }
